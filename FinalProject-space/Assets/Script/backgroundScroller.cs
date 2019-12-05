@@ -31,7 +31,7 @@ public class backgroundScroller : MonoBehaviour
 
         if (gameController.winCondition == true) //if the win condition on the gamecontroller script is true
         {
-            scrollSpeed = -10f;
+            scrollSpeed = -20f;
         }
 
         //transform.position = startPosition + Vector3.forward * newPosition;

@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     private float nextFire;
 
     private Rigidbody rb;
+    
 
     public AudioSource musicSource;
     public AudioClip shottingAudio;
