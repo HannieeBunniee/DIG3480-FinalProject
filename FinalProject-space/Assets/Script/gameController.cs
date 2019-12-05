@@ -24,8 +24,7 @@ public class gameController : MonoBehaviour
     public Text restartText;
     public Text winText;
     public Text countdownText;
-    //public Text hardmodeText;
-    public int timeLeft = 60;
+    private float timeLeft = 30.0f;
     private int score;
     private int hazardStart;
     
@@ -40,6 +39,7 @@ public class gameController : MonoBehaviour
     public bool winCondition;
     private bool gameOver;
     private bool restart;
+    private bool timer;
 
     public ParticleSystem starfield;
     public ParticleSystem starDistant;
@@ -47,14 +47,12 @@ public class gameController : MonoBehaviour
     //======Start===========
     private void Start()
     {
-        // moverscript = moverscript.GetComponent<Mover>(); //calling for it
-        Time.timeScale = 1; // just making sure the timescale is right  
         musicSource.clip = musicBackground;
         musicSource.Play();
         winCondition = false;
         gameOver = false;
         restart = false;
-        //hardmodeText.text = "Press 'H' to enter Hardmode";
+        timer = false;
         countdownText.text = "";
         restartText.text = "";
         winText.text = "";
@@ -66,7 +64,6 @@ public class gameController : MonoBehaviour
     //===========Updates============
     private void Update()
     {
-        //countdownText.text = ("Time left: " + timeLeft);
         if (restart)
         {
             //if (Input.anyKey) i misread it into ANY key that was pressed down
@@ -75,6 +72,23 @@ public class gameController : MonoBehaviour
                 SceneManager.LoadScene("FinalProject"); //the scense name, restarting the scense after press R
             }
         }
+
+        if (timer == true) //countdown time code
+        {
+            timeLeft -= Time.deltaTime;
+            countdownText.text = (timeLeft).ToString("0");
+            if (gameOver == true)
+            {
+                timer = false;
+            }
+            else if (timeLeft < 0)
+            {
+                
+                GameOver();
+
+            }
+        }
+        
     }
     private void LateUpdate()
     {
@@ -88,7 +102,7 @@ public class gameController : MonoBehaviour
     {
         yield return new WaitForSeconds(startWait);
 
-        while (gameOver == false) //so player dont run out of asterod to shot/dodge
+        while (true) //so player dont run out of asterod to shot/dodge
         {
             for (int i = 0; i < hazardCount; i++) //make it loops to spawn asteroid 
             {
@@ -97,12 +111,20 @@ public class gameController : MonoBehaviour
                 Quaternion spawnRotation = Quaternion.identity;
                 Instantiate(hazard, spawnPosition, spawnRotation);
                 yield return new WaitForSeconds(spawnWait);
+
+                if (gameOver == true) //make it inside while so it check before keep spawning enemy even if player win
+                {
+                    break; // break out of while loop
+                }
             }
             yield return new WaitForSeconds(waveWait);
 
 
             if (gameOver) //check to see if gameover is true to get out of loop
             {
+                GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy"); //cant lose after winning, also stoping win audio repeating
+                foreach (GameObject enemy in enemies)
+                    GameObject.Destroy(enemy);
                 restartText.text = "Press the 'F' Key to Restart";
                 restart = true;
                 break; // break out of while loop
@@ -111,14 +133,14 @@ public class gameController : MonoBehaviour
         
     }
 
-    IEnumerator LoseTime()
+    /*IEnumerator LoseTime()
     {
         while (true)
         {
             yield return new WaitForSeconds(1);
             timeLeft--;
         }
-    }
+    }*/
 
     public void AddScore(int newScoreValue)
     {
@@ -148,6 +170,7 @@ public class gameController : MonoBehaviour
     }
     public void GameOver()
     {
+        Destroy(GameObject.FindWithTag("Player"));
         winText.text = "Game Over :P!";
         musicSource.Stop();
         musicSource.loop = true;
@@ -156,7 +179,9 @@ public class gameController : MonoBehaviour
         gameOver = true;
     }
 
-    void afterWin() //just for the dumb stars :T
+
+
+    void afterWin() //just for the dumb stars moving faster :T
     {
         winCondition = true;
         var main1 = starfield.main;
@@ -187,11 +212,11 @@ public class gameController : MonoBehaviour
     
     public void hardMode()
     {
-        countdownText.text = ("Time left: " + timeLeft);
+        timer = true;
         hazardStart = 3;
         hazardCount = 20;
         //moverscript.speed = -10f;
-        StartCoroutine("LoseTime");
+        
         StartCoroutine(spawnWave()); //<-- have to use starcoroutine (function()); to call a function.
 
     }
