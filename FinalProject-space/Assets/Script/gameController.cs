@@ -40,6 +40,7 @@ public class gameController : MonoBehaviour
     private bool gameOver;
     private bool restart;
     private bool timer;
+    private bool endless;
 
     public ParticleSystem starfield;
     public ParticleSystem starDistant;
@@ -53,6 +54,7 @@ public class gameController : MonoBehaviour
         gameOver = false;
         restart = false;
         timer = false;
+        endless = false;
         countdownText.text = "";
         restartText.text = "";
         winText.text = "";
@@ -151,7 +153,7 @@ public class gameController : MonoBehaviour
     void UpdateScore()
     {
         scoreText.text = "Points: " + score;
-        if (score >= 100)
+        if (score >= 100 && endless == false)
         {
             GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy"); //cant lose after winning, also stoping win audio repeating
             foreach (GameObject enemy in enemies)
@@ -199,6 +201,7 @@ public class gameController : MonoBehaviour
     //Main menu buttons functions
     public void endlessMode()
     {
+        endless = true;
         hazardStart = 0;
         StartCoroutine(spawnWave()); //<-- have to use starcoroutine (function()); to call a function.. this is getting more confusing
         
