@@ -1,5 +1,7 @@
 ScriptsOnlyBuild:
   usedScripts:
+    Assembly-CSharp-Editor.dll:
+    - ReadmeEditor
     Assembly-CSharp.dll:
     - DestroyByBoundary
     - DestroyByContact
@@ -8,6 +10,7 @@ ScriptsOnlyBuild:
     - Mover
     - PlayerController
     - RandomRotator
+    - Readme
     - backgroundScroller
     - gameController
     - weaponController
@@ -92,11 +95,11 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 9940}
     - Class: 114
-      Script: {instanceID: 10168}
+      Script: {instanceID: 10170}
     - Class: 114
-      Script: {instanceID: 10198}
+      Script: {instanceID: 10200}
     - Class: 114
-      Script: {instanceID: 10370}
+      Script: {instanceID: 10372}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -608,7 +611,7 @@ ScriptsOnlyBuild:
     className: AnimationPlayableAsset
   - hash:
       serializedVersion: 2
-      Hash: b28fe51c07bb833cca8c0d624888b8d0
+      Hash: 528d72d21134abbc03bf7144191b3e87
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerController
@@ -686,7 +689,7 @@ ScriptsOnlyBuild:
     className: TMP_SpriteAnimator
   - hash:
       serializedVersion: 2
-      Hash: de7d6a5820dded6c7f75780e98f1dc41
+      Hash: b00e76e65862f8c6123636d8140cdc75
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: weaponController
@@ -708,6 +711,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: SignalReceiver
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Rotator
   - hash:
       serializedVersion: 2
       Hash: 4a0369cd366c126cd420018a4ac01f32
@@ -891,4 +900,4 @@ ScriptsOnlyBuild:
   platform: 19
   scenePathNames:
   - Assets/Scenes/FinalProject.unity
-  playerPath: C:/Users/Hanniee/Documents/GitHub/DIG3480-FinalProject/FinalProject-space/Build/Challenge3.exe
+  playerPath: D:/Documents/Githubs/DIG3480-FinalProject/FinalProject-space/Build/FinalProject.exe
