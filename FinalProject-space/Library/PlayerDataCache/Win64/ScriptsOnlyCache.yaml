@@ -1,5 +1,7 @@
 ScriptsOnlyBuild:
   usedScripts:
+    Assembly-CSharp-Editor.dll:
+    - ReadmeEditor
     Assembly-CSharp.dll:
     - DestroyByBoundary
     - DestroyByContact
@@ -8,6 +10,7 @@ ScriptsOnlyBuild:
     - Mover
     - PlayerController
     - RandomRotator
+    - Readme
     - backgroundScroller
     - gameController
     - weaponController
@@ -17,16 +20,16 @@ ScriptsOnlyBuild:
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
     - UnityEditor.Graphs.AnimatorControllerTool
-    UnityEditor.TestRunner.dll:
-    - UnityEditor.TestTools.TestRunner.TestListCacheData
     UnityEngine.UI.dll:
     - UnityEngine.EventSystems.EventSystem
     - UnityEngine.EventSystems.StandaloneInputModule
+    - UnityEngine.UI.Button
     - UnityEngine.UI.CanvasScaler
     - UnityEngine.UI.GraphicRaycaster
+    - UnityEngine.UI.Image
     - UnityEngine.UI.Text
   sceneClasses:
-    Assets/Scenes/Challenge3.unity:
+    Assets/Scenes/FinalProject.unity:
     - Class: 1
       Script: {instanceID: 0}
     - Class: 4
@@ -66,31 +69,35 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 9250}
     - Class: 114
+      Script: {instanceID: 9326}
+    - Class: 114
       Script: {instanceID: 9328}
     - Class: 114
       Script: {instanceID: 9334}
     - Class: 114
       Script: {instanceID: 9340}
     - Class: 114
+      Script: {instanceID: 9348}
+    - Class: 114
       Script: {instanceID: 9384}
     - Class: 114
       Script: {instanceID: 9386}
     - Class: 114
-      Script: {instanceID: 9616}
+      Script: {instanceID: 9570}
     - Class: 114
-      Script: {instanceID: 9662}
+      Script: {instanceID: 9618}
     - Class: 114
-      Script: {instanceID: 9704}
+      Script: {instanceID: 9664}
     - Class: 114
-      Script: {instanceID: 10190}
+      Script: {instanceID: 9706}
     - Class: 114
-      Script: {instanceID: 10362}
+      Script: {instanceID: 9940}
     - Class: 114
-      Script: {instanceID: 13796}
+      Script: {instanceID: 10168}
     - Class: 114
-      Script: {instanceID: 15300}
+      Script: {instanceID: 10198}
     - Class: 114
-      Script: {instanceID: 16356}
+      Script: {instanceID: 10370}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -104,6 +111,8 @@ ScriptsOnlyBuild:
     - Class: 198
       Script: {instanceID: 0}
     - Class: 199
+      Script: {instanceID: 0}
+    - Class: 213
       Script: {instanceID: 0}
     - Class: 222
       Script: {instanceID: 0}
@@ -366,6 +375,18 @@ ScriptsOnlyBuild:
     className: TMP_InputField
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: UnityEngine.Advertisements.dll
+    namespaceName: UnityEngine.Advertisements
+    className: CallbackExecutor
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: UnityEngine.Advertisements.dll
+    namespaceName: UnityEngine.Advertisements.Editor
+    className: Placeholder
+  - hash:
+      serializedVersion: 2
       Hash: cf9f5cf2c3145a37ac07f00e50e460f9
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -564,6 +585,12 @@ ScriptsOnlyBuild:
     className: SignalAsset
   - hash:
       serializedVersion: 2
+      Hash: 757d56d0910fdc18d03e5b801da35a3f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: EvasiveManeuver
+  - hash:
+      serializedVersion: 2
       Hash: afc5b93a7b192de2dcb3832fe35a5c7e
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -576,7 +603,7 @@ ScriptsOnlyBuild:
     className: AnimationTrack
   - hash:
       serializedVersion: 2
-      Hash: b7345b9f4d249f12af9dc9da79a70f64
+      Hash: 6cddd5e0eeb5b0c80e88c5983130bbaa
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: gameController
@@ -648,6 +675,12 @@ ScriptsOnlyBuild:
     className: TMP_Asset
   - hash:
       serializedVersion: 2
+      Hash: 20044d53766a450c44ade696e08394f7
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Timer
+  - hash:
+      serializedVersion: 2
       Hash: c3d3430df9e3ea95e3e3d587961390fb
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
@@ -664,6 +697,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_SpriteAnimator
+  - hash:
+      serializedVersion: 2
+      Hash: de7d6a5820dded6c7f75780e98f1dc41
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: weaponController
   - hash:
       serializedVersion: 2
       Hash: 4fd8bf02e3089425d3502e26c44ba31a
@@ -748,6 +787,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: TimelineAsset
+  - hash:
+      serializedVersion: 2
+      Hash: 342e31f03f946e991c13cef51a1a2298
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: backgroundScroller
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -856,25 +901,7 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
-  - hash:
-      serializedVersion: 2
-      Hash: be2d1663d6bc8ce39ce9c8dea6a963c7
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: backgroundScroller
-  - hash:
-      serializedVersion: 2
-      Hash: de7d6a5820dded6c7f75780e98f1dc41
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: weaponController
-  - hash:
-      serializedVersion: 2
-      Hash: 757d56d0910fdc18d03e5b801da35a3f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: EvasiveManeuver
   platform: 19
   scenePathNames:
-  - Assets/Scenes/Challenge3.unity
-  playerPath: D:/Documents/Githubs/Challenge3_git/Challenge3/Build/Challenge3.exe
+  - Assets/Scenes/FinalProject.unity
+  playerPath: D:/Documents/Githubs/DIG3480-FinalProject/FinalProject-space/Build/Challenge3.exe
