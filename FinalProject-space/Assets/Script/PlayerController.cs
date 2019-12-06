@@ -4,6 +4,7 @@
  * ============    Computer As A Medium    ===================
  * ==*==*==*==*==*==   Final Project   ==*==*==*==*==*==*==*==
  ************************************************************/
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,7 +25,11 @@ public class PlayerController : MonoBehaviour
     public float fireRate;
     private float nextFire;
 
+    public bool hasBuff;
+    public float buffTimer;
+
     private Rigidbody rb;
+
     
 
     public AudioSource musicSource;
@@ -34,6 +39,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        buffTimer = 5f; //buff timer 5 second
     }
 
     private void Update()
@@ -46,6 +52,32 @@ public class PlayerController : MonoBehaviour
             musicSource.Play();
 
         }
+
+        CheckIfBuffActive(); //function
+
+     
+    }
+
+    private void CheckIfBuffActive() // check if buff is active
+    {
+        if (hasBuff)
+        {
+            buffTimer -= Time.deltaTime; //countdown timer by 1 second
+            if (buffTimer <= 0)
+            {
+                hasBuff = false;
+                ResetTimer();
+            }
+        }
+        else if (!hasBuff) // go down to 0 and reset to firerate
+        {
+            fireRate = .5f;
+        }
+    }
+
+    private void ResetTimer()
+    {
+        buffTimer = 5f; //5 second
     }
 
     void FixedUpdate()
@@ -64,5 +96,16 @@ public class PlayerController : MonoBehaviour
         );
 
         rb.rotation = Quaternion.Euler(0.0f, 0.0f, rb.velocity.x * -tilt); //tilt code
+    }
+    private void OnTriggerEnter(Collider other) // see if the player collide with the pickup
+    {
+        if (other.tag == ("pickup"))
+        {
+            Destroy(other.gameObject);
+            hasBuff = true;
+           
+            fireRate  = fireRate / 3; // cutting firerate by half (increase speed)
+            
+        }
     }
 }

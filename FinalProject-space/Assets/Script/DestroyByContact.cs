@@ -31,7 +31,7 @@ public class DestroyByContact : MonoBehaviour
     {
         //Debug.Log(other.name); //checking to see why asteroid disapear when test play game
 
-        if (other.tag == ("Boundary") || other.tag == ("Enemy")) //make sure that if it the boundary it wont collide and destroy each other
+        if (other.tag == ("Boundary") || other.tag == ("Enemy") || other.tag == ("pickup")) //make sure that if it the boundary it wont collide and destroy each other
         {
             return;
         }
@@ -42,7 +42,12 @@ public class DestroyByContact : MonoBehaviour
             Instantiate(explosion, transform.position, transform.rotation);
         }
 
-        if (other.tag == "Player")
+        /*if (other.tag == ("Player") && other.tag == ("pickup"))
+        {
+            return;
+        }*/
+
+        if (other.tag == ("Player"))
         {
             Instantiate(playerExplosion, other.transform.position, other.transform.rotation);
             gameController.GameOver();//calling the code from gamecontroller to show restart/winText
